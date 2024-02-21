@@ -18,12 +18,12 @@ public class AlternativeService {
     @Autowired
     AlternativeMapper alternativeMapper;
 
-    public AlternativeDTO getAlternativeById(Long id) throws Exception {
-        return alternativeMapper.toDTO(alternativeRepository.findById(id).orElseThrow(Exception::new));
+    public List<AlternativeDTO> findAllAlternatives() {
+        return alternativeMapper.toListDTO(alternativeRepository.findAll());
     }
 
-    public List<AlternativeDTO> getAllAlternatives() {
-        return alternativeMapper.toListDTO(alternativeRepository.findAll());
+    public AlternativeDTO findAlternativeById(Long id) throws Exception {
+        return alternativeMapper.toDTO(alternativeRepository.findById(id).orElseThrow(Exception::new));
     }
 
     public AlternativeDTO saveAlternative(AlternativeDTO alternativeDTO){
@@ -31,7 +31,7 @@ public class AlternativeService {
     }
 
     public void deleteAlternative(Long id) throws Exception {
-        alternativeRepository.delete(alternativeMapper.toEntity(getAlternativeById(id)));
+        alternativeRepository.delete(alternativeMapper.toEntity(findAlternativeById(id)));
     }
 
     public AlternativeDTO updateAlternative(AlternativeDTO newAlternative, Long id) throws Exception {

@@ -16,8 +16,16 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
     private UserMapper userMapper;
 
+    public List<User> findAllUsers(){
+        return userRepository.findAll();
+    }
+
+    public Optional<UserDTO> findById(Long id) {
+        return Optional.ofNullable(userMapper.toDTO(userRepository.findById(id).get()));
+    }
 
     public UserDTO saveUser(UserDTO userDTO) {
         User userModel = userMapper.toEntity(userDTO);
@@ -30,17 +38,13 @@ public class UserService {
         return userRepository.saveAll(userList);
     }
 
-    public Optional<UserDTO> fundById(Long id) {
-        return Optional.ofNullable(userMapper.toDTO(userRepository.findById(id).get()));
+    public void deleteUser(User user) {
+        userRepository.delete(user);
     }
 
     public User updateUser(User user) {
         Optional<User> userController = userRepository.findById(user.getId());
         return userRepository.save(userController.get());
-    }
-
-    public void deleteUser(User user) {
-        userRepository.delete(user);
     }
 
 }

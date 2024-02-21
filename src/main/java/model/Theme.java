@@ -7,22 +7,21 @@ import java.util.List;
 
 @SequenceGenerator(name = "tb_theme_seq", allocationSize = 1)
 @Entity
-@Table(name = "tb_tema")
+@Table(name = "tb_theme")
 public class Theme {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tb_theme_seq")
     private Long id;
 
-    @Column(name = "tema")
+    @Column(name = "theme")
     private String theme;
 
     @OneToMany(mappedBy = "theme", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @Column(name = "questoes")
+    @Column(name = "question")
     private List<Question> questions = new ArrayList<>();
 
     public Theme() {
-
     }
 
     public Theme(Long id, String theme, List<Question> questions) {
@@ -57,10 +56,10 @@ public class Theme {
 
     @Override
     public String toString() {
-        return "Theme{" +
-                "id=" + id +
-                ", theme='" + theme + '\'' +
-                ", questions=" + questions +
+        return "Theme {" +
+                "id = " + id +
+                ", theme = '" + theme + '\'' +
+                ", questions = " + questions +
                 '}';
     }
 

@@ -18,12 +18,12 @@ public class AlternativeController {
 
     @GetMapping
     public ResponseEntity<List<AlternativeDTO>> findAllAlternatives(){
-        return new ResponseEntity<>(alternativeService.getAllAlternatives(), HttpStatus.OK);
+        return new ResponseEntity<>(alternativeService.findAllAlternatives(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<AlternativeDTO> findAllAlternativeById(@PathVariable Long id) throws Exception {
-        return new ResponseEntity<>(alternativeService.getAlternativeById(id), HttpStatus.OK);
+        return new ResponseEntity<>(alternativeService.findAlternativeById(id), HttpStatus.OK);
     }
 
     @PostMapping("/save")

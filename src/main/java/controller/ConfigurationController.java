@@ -36,6 +36,4 @@ public class ConfigurationController {
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
-    // UPDATECONFIG
-
 }

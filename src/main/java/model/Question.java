@@ -5,27 +5,26 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@SequenceGenerator(name = "tb_questao_seq", allocationSize = 1)
+@SequenceGenerator(name = "tb_question_seq", allocationSize = 1)
 @Entity
-@Table(name = "tb_questao")
+@Table(name = "tb_question")
 public class Question {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tb_questao_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tb_question_seq")
     private Long id;
 
-    @Column(name = "pergunta")
+    @Column(name = "question")
     private String question;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Alternative> alternativeList = new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "id_tema")
+    @JoinColumn(name = "id_theme")
     private Theme theme;
 
     public Question() {
-
     }
 
     public Question(Long id, String question, List<Alternative> alternativeList, Theme theme) {
@@ -67,6 +66,16 @@ public class Question {
         this.theme = theme;
     }
 
+    @Override
+    public String toString() {
+        return "Question {" +
+                "id = " + id +
+                ", question = '" + question + '\'' +
+                ", alternative list = " + alternativeList +
+                ", theme = " + theme +
+                '}';
+    }
+
     public static final class Builder {
         private Question question;
 
@@ -102,15 +111,5 @@ public class Question {
             return question;
         }
     }
-
-    @Override
-    public String toString() {
-        return "Question{" +
-                "id=" + id +
-                ", question='" + question + '\'' +
-                ", alternativeList=" + alternativeList +
-                ", theme=" + theme +
-                '}';
-    }
-
+    
 }

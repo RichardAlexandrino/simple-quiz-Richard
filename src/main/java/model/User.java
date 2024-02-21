@@ -2,35 +2,34 @@ package model;
 
 import jakarta.persistence.*;
 
-@SequenceGenerator(name = "tb_usuario_seq", allocationSize = 1)
+@SequenceGenerator(name = "tb_user_seq", allocationSize = 1)
 @Entity
-@Table(name = "tb_usuario")
+@Table(name = "tb_user")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tb_usuario_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tb_user_seq")
     private Long id;
 
-    @Column(name = "nome")
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "apelido")
+    @Column(name = "nick_name")
     private String nickName;
 
-    @Column(name = "nome_completo")
+    @Column(name = "full_name")
     private String fullName;
 
-    @Column(name = "idade")
+    @Column(name = "age")
     private Integer age;
 
     @Column(name = "email")
     private String email;
 
-    @Column(name = "senha")
+    @Column(name = "password")
     private String password;
 
     public User() {
-
     }
 
     public User(Long id, String name, String nickName, String fullName, Integer age, String email, String password) {
@@ -101,14 +100,14 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", nickName='" + nickName + '\'' +
-                ", fullName='" + fullName + '\'' +
-                ", age=" + age +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
+        return "User {" +
+                "id = " + id +
+                ", name = '" + name + '\'' +
+                ", nick name = '" + nickName + '\'' +
+                ", full name = '" + fullName + '\'' +
+                ", age = " + age +
+                ", email = '" + email + '\'' +
+                ", password = '" + password + '\'' +
                 '}';
     }
 

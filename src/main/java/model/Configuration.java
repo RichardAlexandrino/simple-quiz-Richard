@@ -2,27 +2,26 @@ package model;
 
 import jakarta.persistence.*;
 
-@SequenceGenerator(name = "tb_configuracao_jogo_seq", allocationSize = 1)
+@SequenceGenerator(name = "tb_game_configuration_seq", allocationSize = 1)
 @Entity
-@Table(name = "tb_configuracao_jogo")
+@Table(name = "tb_game_configuration")
 public class Configuration {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tb_configuracao_jogo_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tb_game_configuration_seq")
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "moeda_inicial")
+    @Column(name = "initial_coins")
     private Long initialCoins;
 
-    @Column(name = "pontuacao_por_acerto")
+    @Column(name = "score_per_hit")
     private Long scorePerHit;
 
     @Column(name = "level")
     private String level;
 
     public Configuration() {
-
     }
 
     public Configuration(Long id, Long initialCoins, Long scorePerHit, String level) {
@@ -66,14 +65,13 @@ public class Configuration {
 
     @Override
     public String toString() {
-        return "Configuration{" +
-                "id=" + id +
-                ", initialCoins=" + initialCoins +
-                ", scorePerHit=" + scorePerHit +
-                ", level='" + level + '\'' +
+        return "Configuration {" +
+                "id = " + id +
+                ", initial coins = " + initialCoins +
+                ", score per hit = " + scorePerHit +
+                ", level = '" + level + '\'' +
                 '}';
     }
-
 
     public static final class Builder {
         private Configuration configuration;

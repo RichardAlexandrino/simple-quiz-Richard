@@ -2,30 +2,29 @@ package model;
 
 import jakarta.persistence.*;
 
-@SequenceGenerator(name = "tb_alternativa_seq", allocationSize = 1)
+@SequenceGenerator(name = "tb_alternative_seq", allocationSize = 1)
 @Entity
-@Table(name = "tb_alternativa")
+@Table(name = "tb_alternative")
 public class Alternative {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tb_alternativa_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tb_alternative_seq")
     private Long id;
 
-    @Column(name = "alternativa")
+    @Column(name = "alternative")
     private String alternative;
 
-    @Column(name = "correta")
+    @Column(name = "correct")
     private boolean itsCorrect;
 
-    @Column(name = "letra_referencia")
+    @Column(name = "reference_letter")
     private String referenceLetter;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "questao_id")
+    @JoinColumn(name = "question_id")
     private Question question;
 
     public Alternative() {
-
     }
 
     public Alternative(Long id, String alternative, boolean itsCorrect, String referenceLetter, Question question) {
@@ -78,12 +77,12 @@ public class Alternative {
 
     @Override
     public String toString() {
-        return "Alternative{" +
-                "id=" + id +
-                ", alternative='" + alternative + '\'' +
-                ", itsCorrect=" + itsCorrect +
-                ", referenceLetter='" + referenceLetter + '\'' +
-                ", question=" + question +
+        return "Alternative {" +
+                "id = " + id +
+                ", alternative = '" + alternative + '\'' +
+                ", its correct = " + itsCorrect +
+                ", reference letter = '" + referenceLetter + '\'' +
+                ", question = " + question +
                 '}';
     }
 
