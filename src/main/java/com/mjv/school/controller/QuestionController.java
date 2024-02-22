@@ -1,6 +1,7 @@
 package com.mjv.school.controller;
 
 import com.mjv.school.dto.QuestionDTO;
+import com.mjv.school.model.Configuration;
 import com.mjv.school.model.Question;
 import com.mjv.school.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,11 @@ public class QuestionController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteQuestion(@PathVariable Long id){
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping
+    public ResponseEntity<Question> updateQuestion(@RequestBody Question question) {
+        return new ResponseEntity<>(questionService.updateQuestion(question), HttpStatus.OK);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.mjv.school.controller;
 
 import com.mjv.school.dto.UserDTO;
+import com.mjv.school.model.Theme;
 import com.mjv.school.model.User;
 import com.mjv.school.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,11 @@ public class UserController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteUserById(@PathVariable Long id){
         return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping
+    public ResponseEntity<User> updateUser(@RequestBody User user) {
+        return new ResponseEntity<>(userService.updateUser(user), HttpStatus.OK);
     }
 
 }

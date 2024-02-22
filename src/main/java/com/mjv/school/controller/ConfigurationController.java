@@ -1,6 +1,7 @@
 package com.mjv.school.controller;
 
 import com.mjv.school.dto.ConfigurationDTO;
+import com.mjv.school.model.Configuration;
 import com.mjv.school.service.ConfigurationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,6 +35,11 @@ public class ConfigurationController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteConfigurationById(@PathVariable Long id){
         return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping
+    public ResponseEntity<Configuration> updateConfiguration(@RequestBody Configuration configuration) {
+        return new ResponseEntity<>(configurationService.updateConfiguration(configuration), HttpStatus.OK);
     }
 
 }

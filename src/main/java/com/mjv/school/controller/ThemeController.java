@@ -1,6 +1,8 @@
 package com.mjv.school.controller;
 
 import com.mjv.school.dto.ThemeDTO;
+import com.mjv.school.model.Question;
+import com.mjv.school.model.Theme;
 import com.mjv.school.service.ThemeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,6 +36,11 @@ public class ThemeController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteThemeById(@PathVariable Long id){
         return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping
+    public ResponseEntity<Theme> updateTheme(@RequestBody Theme theme) {
+        return new ResponseEntity<>(themeService.updateTheme(theme), HttpStatus.OK);
     }
 
 }
